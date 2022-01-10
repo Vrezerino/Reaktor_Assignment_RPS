@@ -2,6 +2,7 @@ import React, { useReducer, createContext, useContext } from 'react';
 
 const initialState = {
 	rpsHistory: [],
+	ongoingGames: [],
 	notification: ''
 };
 

@@ -12,6 +12,20 @@ export const setNotification = notif => {
 	};
 };
 
+export const addOngoingGame = game => {
+	return {
+		type: 'ADD_ONGOING_GAME',
+		payload: game
+	};
+};
+
+export const deleteOngoingGame = gameId => {
+	return {
+		type: 'DELETE_ONGOING_GAME',
+		payload: gameId
+	};
+};
+
 export const reducer = (state, action) => {
 	switch (action.type) {
 	case 'SET_RPS_HISTORY':
@@ -26,6 +40,18 @@ export const reducer = (state, action) => {
 		return {
 			...state,
 			notification: action.payload
+		};
+	case 'ADD_ONGOING_GAME':
+		return {
+			...state,
+			ongoingGames: [
+				...state.ongoingGames, action.payload
+			]
+		};
+	case 'DELETE_ONGOING_GAME':
+		return {
+			...state,
+			ongoingGames: state.ongoingGames.filter(g => g.gameId !== action.payload)
 		};
 	default:
 		return state;
