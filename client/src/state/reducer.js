@@ -19,6 +19,13 @@ export const addOngoingGame = game => {
 	};
 };
 
+export const updateOngoingGame = game => {
+	return {
+		type: 'UPDATE_ONGOING_GAME',
+		payload: game
+	};
+};
+
 export const deleteOngoingGame = gameId => {
 	return {
 		type: 'DELETE_ONGOING_GAME',
@@ -46,6 +53,13 @@ export const reducer = (state, action) => {
 			...state,
 			ongoingGames: [
 				...state.ongoingGames, action.payload
+			]
+		};
+	case 'UPDATE_ONGOING_GAME':
+		return {
+			...state,
+			ongoingGames: [
+				...state.ongoingGames.map(g => g.gameId === action.payload.gameId ? action.payload : g)
 			]
 		};
 	case 'DELETE_ONGOING_GAME':

@@ -6,13 +6,14 @@ const OngoingGame = ({ game }) => {
 	const playerAWins = determineGameResult(game);
 	if (game.type === 'GAME_BEGIN') {
 		return (
-			<div>
-				{game.playerA.name} is playing with {game.playerB.name}...
+			<div className='playing'>
+				<span style={{ textAlign: 'left' }}>{game.playerA.name}</span>
+				<span style={{ textAlign: 'right' }}>{game.playerB.name}</span>
 			</div>
 		);
 	} else {
 		return (
-			<div>
+			<div className='played'>
 				{playerAWins === 'tie'
 					? <div>{game.playerA.name} ({game.playerA.played}) tied with {game.playerB.name} ({game.playerB.played})!</div>
 					: playerAWins

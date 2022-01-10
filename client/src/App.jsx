@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-//import GameResult from './components/GameResult';
 import OngoingGames from './components/OngoinGames';
-//import { determineGameResult } from './utils/utils';
 import { useStateValue } from './state/state';
 import {
 	setRPSHIstory,
 	addOngoingGame,
-	setNotification,
-	deleteOngoingGame } from './state/reducer';
+	updateOngoingGame,
+	deleteOngoingGame,
+	setNotification
+} from './state/reducer';
 import { getRPSHIstory } from './services/rpsService';
 
 const App = () => {
-	const socket = new WebSocket('ws://bad-api-assignment.reaktor.com/rps/live');
+	const socket = new WebSocket('wss://bad-api-assignment.reaktor.com/rps/live');
 	const [{ rpsHistory, notification }, dispatch] = useStateValue();
 
 	useEffect(async () => {
@@ -31,8 +31,8 @@ const App = () => {
 			if (gameJSON.type === 'GAME_BEGIN') {
 				dispatch(addOngoingGame(gameJSON));
 			} else {
-			// Update it with result and delete
-				dispatch(addOngoingGame(gameJSON));
+				// Update it with result and delete
+				dispatch(updateOngoingGame(gameJSON));
 				setTimeout(() => {
 					dispatch(deleteOngoingGame(gameJSON.gameId));
 				}, 5000);

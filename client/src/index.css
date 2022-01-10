@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.playing, .played {
+	width: 270px;
+	height: 270px;
+}
+
+.playing {
+	background-image: url('./img/rps.gif');
+}
