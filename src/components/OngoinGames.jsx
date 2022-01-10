@@ -7,8 +7,8 @@ const OngoingGame = ({ game }) => {
 	if (game.type === 'GAME_BEGIN') {
 		return (
 			<div className='playing'>
-				<span style={{ textAlign: 'left' }}>{game.playerA.name}</span>
-				<span style={{ textAlign: 'right' }}>{game.playerB.name}</span>
+				<span style={{ float: 'left' }}>{game.playerA.name}</span>
+				<span style={{ float: 'right' }}>{game.playerB.name}</span>
 			</div>
 		);
 	} else {
@@ -27,7 +27,7 @@ const OngoingGame = ({ game }) => {
 const OngoingGames = () => {
 	const [{ ongoingGames }] = useStateValue();
 	return (
-		<div>
+		<div className='games-list'>
 			{ongoingGames.map((g, i) => <OngoingGame key={i} game={g} />)}
 		</div>
 	);

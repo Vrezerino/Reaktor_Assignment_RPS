@@ -12,7 +12,7 @@ import { getRPSHIstory } from './services/rpsService';
 
 const App = () => {
 	const socket = new WebSocket('wss://bad-api-assignment.reaktor.com/rps/live');
-	const [{ rpsHistory, notification }, dispatch] = useStateValue();
+	const [{ notification }, dispatch] = useStateValue();
 
 	useEffect(async () => {
 		try {
@@ -42,8 +42,8 @@ const App = () => {
 
 	if (notification) return <div>{notification}</div>;
 
-	return rpsHistory && (
-		<div>
+	return (
+		<div className='container'>
 			{/*rpsHistory.map(game =>
 				<GameResult
 					key={game.gameId}
