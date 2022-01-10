@@ -23,11 +23,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+	background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3 {
+	text-align: center;
+	color: white;
 }
 
 .container {
@@ -47,8 +53,12 @@ code {
 	font-weight: bold;
 	border-radius: 2em;
 	padding: 1em;
-	width: 240px;
-	height: 240px;
+	width: 238px;
+	height: 238px;
+}
+
+.played {
+	color: white;
 }
 
 .playing {

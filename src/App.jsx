@@ -10,6 +10,10 @@ import {
 } from './state/reducer';
 import { getRPSHIstory } from './services/rpsService';
 
+import rock from './img/rock.png';
+import paper from './img/paper.png';
+import scissors from './img/scissors.png';
+
 const App = () => {
 	const socket = new WebSocket('wss://bad-api-assignment.reaktor.com/rps/live');
 	const [{ notification }, dispatch] = useStateValue();
@@ -44,6 +48,12 @@ const App = () => {
 
 	return (
 		<div className='container'>
+			<h1>
+				<img src={rock} />
+				<img src={paper} />
+				<img src={scissors} />
+			</h1>
+			<h2>Live games</h2>
 			{/*rpsHistory.map(game =>
 				<GameResult
 					key={game.gameId}
