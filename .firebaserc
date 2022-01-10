@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "rockpaperscissorsdata"
+  },
+	"rewrites": [
+  	{
+  	  "source": "/",
+  	  "destination": "/client/build/index.html",
+			"run": {
+					"region": "europe-north1"
+				}
+  	},
+  	{
+  	  "source": "/api",
+  	  "function": "api",
+			"run": {
+					"region": "europe-north1"
+				}
+  	}
+	]
+}

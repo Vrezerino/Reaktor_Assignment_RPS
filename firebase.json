@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "hosting": {
+    "public": "client/build/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+		"rewrites": [
+			{
+				"source": "/",
+				"destination": "/client/build/index.html",
+				"run": {
+						"region": "europe-north1"
+					}
+			},
+			{
+				"source": "/api",
+				"function": "api",
+				"run": {
+						"region": "europe-north1"
+					}
+			}
+		]
+  }
+}
