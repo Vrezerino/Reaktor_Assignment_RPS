@@ -4,21 +4,26 @@ import { determineGameResult } from '../utils/utils';
 
 const OngoingGame = ({ game }) => {
 	const playerAWins = determineGameResult(game);
+	const a = game.playerA.played;
+	const b = game.playerB.played;
+	const playerA = game.playerA.name;
+	const playerB = game.playerB.name;
+
 	if (game.type === 'GAME_BEGIN') {
 		return (
 			<div className='playing'>
-				<span style={{ float: 'left' }}>{game.playerA.name}</span>
-				<span style={{ float: 'right' }}>{game.playerB.name}</span>
+				<span style={{ float: 'left' }}>{playerA}</span>
+				<span style={{ float: 'right' }}>{playerB}</span>
 			</div>
 		);
 	} else {
 		return (
 			<div className='played'>
 				{playerAWins === 'tie'
-					? <div>{game.playerA.name} ({game.playerA.played}) tied with {game.playerB.name} ({game.playerB.played})!</div>
+					? <div>{playerA} tied with {playerB} ({a} vs {b})!</div>
 					: playerAWins
-						? <div>{game.playerA.name} wins {game.playerB.name}´s {game.playerB.played} with {game.playerA.played}!</div>
-						: <div>{game.playerB.name} wins {game.playerA.name}´s {game.playerA.played} with {game.playerB.played}!</div>}
+						? <div>{playerA} wins {playerB}´s {b} with {a}!</div>
+						: <div>{playerB} wins {playerA}´s {a} with {b}!</div>}
 			</div>
 		);
 	}

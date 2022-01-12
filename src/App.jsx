@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import OngoingGames from './components/OngoinGames';
+import GameHistory from './components/GameHistory';
 import { useStateValue } from './state/state';
 import {
 	setRPSHIstory,
 	addOngoingGame,
 	updateOngoingGame,
 	deleteOngoingGame,
-	setNotification
+	setNotification,
+	setUniquePlayers
 } from './state/reducer';
-import { getRPSHIstory } from './services/rpsService';
+import { getHistory } from './services/rpsService';
+import { /*parseGames,*/ uniquePlayers } from './utils/utils';
 
 import rock from './img/rock.png';
 import paper from './img/paper.png';
@@ -20,12 +23,15 @@ const App = () => {
 
 	useEffect(async () => {
 		try {
-			const data = await getRPSHIstory();
-			dispatch(setRPSHIstory(data.data));
+			const data = await getHistory();
+			//console.log('final', data);
+			console.log(uniquePlayers(data));
+			dispatch(setRPSHIstory(data));
+			dispatch(setUniquePlayers(uniquePlayers(data)));
 		} catch (e) {
 			dispatch(setNotification(e.message));
 		}
-	}, [dispatch]);
+	}, [getHistory]);
 
 	useEffect(() => {
 		socket.onmessage = game => {
@@ -44,8 +50,6 @@ const App = () => {
 		};
 	}, []);
 
-	if (notification) return <div>{notification}</div>;
-
 	return (
 		<div className='container'>
 			<h1>
@@ -53,14 +57,10 @@ const App = () => {
 				<img src={paper} />
 				<img src={scissors} />
 			</h1>
+			<div className='notification'>{notification}</div>
 			<h2>Live games</h2>
-			{/*rpsHistory.map(game =>
-				<GameResult
-					key={game.gameId}
-					game={game}
-					playerAWins={determineGameResult(game)} />
-			)*/}
 			<OngoingGames />
+			<GameHistory />
 		</div>
 	);
 };

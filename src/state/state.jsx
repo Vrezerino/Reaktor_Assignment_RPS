@@ -1,8 +1,9 @@
 import React, { useReducer, createContext, useContext } from 'react';
 
 const initialState = {
-	rpsHistory: [],
+	gameHistory: [],
 	ongoingGames: [],
+	uniquePlayers: [],
 	notification: ''
 };
 

@@ -64,3 +64,15 @@ h1, h2, h3 {
 .playing {
 	background-image: url('./img/rps.gif');
 }
+
+.game-history {
+	color: white;
+}
+
+td {
+	text-align: center;
+}
+
+thead {
+	font-weight: bold;
+}

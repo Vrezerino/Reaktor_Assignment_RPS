@@ -5,6 +5,13 @@ export const setRPSHIstory = history => {
 	};
 };
 
+export const setUniquePlayers = players => {
+	return {
+		type: 'SET_UNIQUE_PLAYERS',
+		payload: players
+	};
+};
+
 export const setNotification = notif => {
 	return {
 		type: 'SET_NOTIFICATION',
@@ -38,10 +45,19 @@ export const reducer = (state, action) => {
 	case 'SET_RPS_HISTORY':
 		return {
 			...state,
-			rpsHistory: [
+			gameHistory: [
+				// Descending order by game time
+				...action.payload.sort((g1, g2) => g2.t - g1.t)
+			],
+			...state.gameHistory
+		};
+	case 'SET_UNIQUE_PLAYERS':
+		return {
+			...state,
+			uniquePlayers: [
 				...action.payload
 			],
-			...state.rpsHistory
+			...state.uniquePlayers
 		};
 	case 'SET_NOTIFICATION':
 		return {
