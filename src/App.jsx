@@ -3,7 +3,7 @@ import OngoingGames from './components/OngoinGames';
 import GameHistory from './components/GameHistory';
 import { useStateValue } from './state/state';
 import {
-	setRPSHIstory,
+	setGameHistory,
 	addOngoingGame,
 	updateOngoingGame,
 	deleteOngoingGame,
@@ -11,7 +11,7 @@ import {
 	setUniquePlayers
 } from './state/reducer';
 import { getHistory } from './services/rpsService';
-import { /*parseGames,*/ uniquePlayers } from './utils/utils';
+import { uniquePlayers } from './utils/utils';
 
 import rock from './img/rock.png';
 import paper from './img/paper.png';
@@ -26,7 +26,7 @@ const App = () => {
 			const data = await getHistory();
 			//console.log('final', data);
 			console.log(uniquePlayers(data));
-			dispatch(setRPSHIstory(data));
+			dispatch(setGameHistory(data));
 			dispatch(setUniquePlayers(uniquePlayers(data)));
 		} catch (e) {
 			dispatch(setNotification(e.message));

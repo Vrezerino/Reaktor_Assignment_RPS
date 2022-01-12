@@ -1,6 +1,6 @@
-export const setRPSHIstory = history => {
+export const setGameHistory = history => {
 	return {
-		type: 'SET_RPS_HISTORY',
+		type: 'SET_GAME_HISTORY',
 		payload: history
 	};
 };
@@ -42,7 +42,7 @@ export const deleteOngoingGame = gameId => {
 
 export const reducer = (state, action) => {
 	switch (action.type) {
-	case 'SET_RPS_HISTORY':
+	case 'SET_GAME_HISTORY':
 		return {
 			...state,
 			gameHistory: [

@@ -1,5 +1,22 @@
 export const baseUrl = 'https://bad-api-assignment.reaktor.com/rps';
 
+export const sortAscending = array => {
+	return array.sort((a, b) => {
+		if (typeof a === 'string' && typeof b === 'string') {
+			const nameA = a.toLowerCase(), nameB = b.toLowerCase();
+			if (nameA < nameB) return -1; // Sort string ascending.
+			if (nameA > nameB) return 1;
+			return 0; // Default return value (no sorting).
+		} else if (typeof a === 'number' && typeof b === 'number') {
+			if (a < b) return -1;
+			if (a > b) return 1;
+			return 0;
+		} else {
+			throw new Error('Not a number nor a string!');
+		}
+	});
+};
+
 // Return true if A's hand wins, otherwise false or 'tie'.
 export const determineGameResult = game => {
 	const a = game.playerA.played;
@@ -27,12 +44,7 @@ export const uniquePlayers = games => {
 			});
 		}
 	);
-	return uniques.sort((a, b) => {
-		const nameA = a.toLowerCase(), nameB = b.toLowerCase();
-		if (nameA < nameB) return -1; // Sort string ascending.
-		if (nameA > nameB) return 1;
-		return 0; // Default return value (no sorting).
-	});
+	return sortAscending(uniques);
 };
 
 export const gameStatistics = (games, uniquePlayer) => {
@@ -57,7 +69,7 @@ export const gameStatistics = (games, uniquePlayer) => {
 			});
 		}
 	);
-	// Get number of wins and each hand
+	// Get number of wins and each hand.
 	allHandsByName.forEach(hand => {
 		if (hand.won) wins++;
 
@@ -81,32 +93,3 @@ export const gameStatistics = (games, uniquePlayer) => {
 		totalGamesByName
 	};
 };
-
-/*
-export const parseGames = games => {
-	return games.map(game => {
-		const gameId = game.gameId;
-		const a = game.playerA.played;
-		const b = game.playerB.played;
-		const playerA = game.playerA.name;
-		const playerB = game.playerB.name;
-		const player_A_wins = determineGameResult(game);
-		return {
-			gameId,
-			date: new Date(game.t).toLocaleString(),
-			winner: player_A_wins !== 'tie' ? player_A_wins ? playerA : playerB : null,
-			playerA: {
-				name: playerA,
-				hand: a,
-				// Two points for winning, one point for tie.
-				win: player_A_wins !== 'tie' ? player_A_wins ? 2 : 0 : 1
-			},
-			playerB: {
-				name: playerB,
-				hand: b,
-				win: player_A_wins !== 'tie' ? !player_A_wins ? 2 : 0 : 1
-			}
-		};
-	});
-};
-*/
