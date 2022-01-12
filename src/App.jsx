@@ -34,7 +34,7 @@ const App = () => {
 
 	useEffect(() => {
 		socket.onmessage = game => {
-			// Must parse twice due to excess quotest.
+			// Must parse twice due to excess quotes.
 			const gameJSON = JSON.parse(JSON.parse(game.data));
 			// Add new ongoing game.
 			if (gameJSON.type === 'GAME_BEGIN') {
