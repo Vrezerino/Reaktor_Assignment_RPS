@@ -17,15 +17,17 @@ import rock from './img/rock.png';
 import paper from './img/paper.png';
 import scissors from './img/scissors.png';
 
+import { Routes, Route, Link } from 'react-router-dom';
+
 const App = () => {
 	const socket = new WebSocket('wss://bad-api-assignment.reaktor.com/rps/live');
-	const [{ notification }, dispatch] = useStateValue();
+	const [, dispatch] = useStateValue();
 
 	useEffect(async () => {
 		try {
 			const data = await getHistory();
-			console.log(uniquePlayers(data));
 			dispatch(setGameHistory(data));
+			// Extract unique players from historic game data.
 			dispatch(setUniquePlayers(uniquePlayers(data)));
 		} catch (e) {
 			dispatch(setNotification(e.message));
@@ -56,10 +58,13 @@ const App = () => {
 				<img src={paper} />
 				<img src={scissors} />
 			</h1>
-			<div className='notification'>{notification}</div>
-			<h2>Live games</h2>
-			<OngoingGames />
-			<GameHistory />
+			<nav>
+				<h2><Link to='/'>Live Games</Link> || <Link to='/history'>Game History</Link></h2>
+			</nav>
+			<Routes>
+				<Route path='/' element={<OngoingGames />} />
+				<Route path='/history' element={<GameHistory />} />
+			</Routes>
 		</div>
 	);
 };

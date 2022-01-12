@@ -16,6 +16,15 @@
 	}
 }
 
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	color: rgb(238, 78, 3);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -67,12 +76,19 @@ h1, h2, h3 {
 
 .game-history {
 	color: white;
+	margin: 0 auto;
 }
 
-td {
-	text-align: center;
+table {
+	margin: 0 auto;
+	max-width: 900px;
 }
 
 thead {
 	font-weight: bold;
+}
+
+td {
+	
+	border: 1px;
 }
