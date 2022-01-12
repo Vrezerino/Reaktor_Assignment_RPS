@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import OngoingGames from './components/OngoinGames';
+import LiveGames from './components/LiveGames';
 import GameHistory from './components/GameHistory';
 import { useStateValue } from './state/state';
 import {
@@ -62,7 +62,7 @@ const App = () => {
 				<h2><Link to='/'>Live Games</Link> || <Link to='/history'>Game History</Link></h2>
 			</nav>
 			<Routes>
-				<Route path='/' element={<OngoingGames />} />
+				<Route path='/' element={<LiveGames />} />
 				<Route path='/history' element={<GameHistory />} />
 			</Routes>
 		</div>

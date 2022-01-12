@@ -29,10 +29,10 @@ const OngoingGame = ({ game }) => {
 	}
 };
 
-const OngoingGames = () => {
+const OngoingGames = ({ small }) => {
 	const [{ ongoingGames }] = useStateValue();
 	return (
-		<div className='games-list'>
+		<div className={small ? 'games-list-small' : 'games-list'}>
 			{ongoingGames.map((g, i) => <OngoingGame key={i} game={g} />)}
 		</div>
 	);

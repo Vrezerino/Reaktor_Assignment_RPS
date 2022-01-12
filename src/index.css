@@ -50,10 +50,15 @@ h1, h2, h3 {
 	margin: 0 auto;
 }
 
-.games-list {
+.games-list, .games-list-small {
 	display: flex;
   flex-wrap: wrap;
 	justify-content: center;
+}
+
+.games-list-small {
+	float: left;
+	width: 40%;
 }
 
 .playing, .played {
@@ -75,13 +80,8 @@ h1, h2, h3 {
 }
 
 .game-history {
+	float: right;
 	color: white;
-	margin: 0 auto;
-}
-
-table {
-	margin: 0 auto;
-	max-width: 900px;
 }
 
 thead {
@@ -89,6 +89,6 @@ thead {
 }
 
 td {
-	
+	padding: 0 1em 0 1em;
 	border: 1px;
 }

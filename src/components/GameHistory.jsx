@@ -1,4 +1,5 @@
 import React from 'react';
+import LiveGames from './LiveGames';
 import { useStateValue } from '../state/state';
 import { gameStatistics } from '../utils/utils';
 
@@ -30,32 +31,35 @@ const GameHistory = () => {
 		});
 
 	return (
-		<div className='game-history'>
-			<table>
-				<thead>
-					<tr>
-						<td>
-							Name
-						</td>
-						<td>
-							Total Games
-						</td>
-						<td>
-							Wins
-						</td>
-						<td>
-							Win Ratio
-						</td>
-						<td>
-							Most Played Hand
-						</td>
-					</tr>
-				</thead>
-				<tbody>
-					{statistics}
-				</tbody>
-			</table>
-		</div>
+		<>
+			<LiveGames small={true} />
+			<div className='game-history'>
+				<table>
+					<thead>
+						<tr>
+							<td>
+								Name
+							</td>
+							<td>
+								Total Games
+							</td>
+							<td>
+								Wins
+							</td>
+							<td>
+								Win Ratio
+							</td>
+							<td>
+								Most Played Hand
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						{statistics}
+					</tbody>
+				</table>
+			</div>
+		</>
 	);
 };
 
