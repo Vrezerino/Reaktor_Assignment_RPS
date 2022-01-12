@@ -17,7 +17,7 @@ export const sortAscending = array => {
 	});
 };
 
-// Return true if A's hand wins, otherwise false or 'tie'.
+// Determine if player A wins. If game isn't a tie, return true or false.
 export const determineGameResult = game => {
 	const a = game.playerA.played;
 	const b = game.playerB.played;
@@ -52,7 +52,7 @@ export const gameStatistics = (games, uniquePlayer) => {
 	let hands = { ROCK: 0, PAPER: 0, SCISSORS: 0 };
 	const allHandsByName = [];
 
-	// Get all played hands by name
+	// Get all played hands by name.
 	games.forEach(
 		game => {
 			const hand = Object.keys(game).flatMap(key =>
