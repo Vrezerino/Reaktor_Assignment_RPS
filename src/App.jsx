@@ -62,9 +62,15 @@ const App = () => {
 				<h2><Link to='/'>Live Games</Link> • <Link to='/history'>Game History</Link></h2>
 			</nav>
 			<Routes>
-				<Route path='/' element={<LiveGames small={false}/>} />
+				<Route path='/' element={<LiveGames small={false} />} />
 				<Route path='/history' element={<GameHistory />} />
 			</Routes>
+			<hr />
+			<footer>
+				© 2022 <a href='https://github.com/Vrezerino' rel='noreferrer' target='_blank'>
+					Patrick Park
+				</a>
+			</footer>
 		</div>
 	);
 };
