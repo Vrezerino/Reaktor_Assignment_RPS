@@ -24,7 +24,6 @@ const App = () => {
 	useEffect(async () => {
 		try {
 			const data = await getHistory();
-			//console.log('final', data);
 			console.log(uniquePlayers(data));
 			dispatch(setGameHistory(data));
 			dispatch(setUniquePlayers(uniquePlayers(data)));
@@ -35,13 +34,13 @@ const App = () => {
 
 	useEffect(() => {
 		socket.onmessage = game => {
-			// Must parse twice due to excess quotes
+			// Must parse twice due to excess quotest.
 			const gameJSON = JSON.parse(JSON.parse(game.data));
-			// Add new ongoing game
+			// Add new ongoing game.
 			if (gameJSON.type === 'GAME_BEGIN') {
 				dispatch(addOngoingGame(gameJSON));
 			} else {
-				// Update it with result and delete
+				// Update it with result and delete.
 				dispatch(updateOngoingGame(gameJSON));
 				setTimeout(() => {
 					dispatch(deleteOngoingGame(gameJSON.gameId));
