@@ -40,7 +40,7 @@ const App = () => {
 			if (gameJSON.type === 'GAME_BEGIN') {
 				dispatch(addOngoingGame(gameJSON));
 			} else {
-				// Update it with result and delete.
+				// Update game with result and delete if it finishes.
 				dispatch(updateOngoingGame(gameJSON));
 				setTimeout(() => {
 					dispatch(deleteOngoingGame(gameJSON.gameId));
