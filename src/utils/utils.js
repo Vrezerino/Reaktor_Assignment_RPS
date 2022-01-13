@@ -59,8 +59,11 @@ export const gameStatistics = (games, uniquePlayer) => {
 				key.includes('player') && game[key].name === uniquePlayer
 					? {
 						name: game[key].name,
+						date: new Date(game.t).toLocaleString(),
 						played: game[key].played,
-						won: key === 'playerA' && determineGameResult(game)
+						won: key === 'playerA' && determineGameResult(game),
+						opponentName: key === 'playerA' ? game.playerB.name : game.playerA.name,
+						opponentPlayed: key === 'playerA' ? game.playerB.played : game.playerA.played
 					}
 					: []
 			);
@@ -90,6 +93,7 @@ export const gameStatistics = (games, uniquePlayer) => {
 		wins,
 		winratio: (1 / (totalGamesByName / wins)).toFixed(3),
 		mostPlayedHand,
+		allGamesByName: allHandsByName,
 		totalGamesByName
 	};
 };

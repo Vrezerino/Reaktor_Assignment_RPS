@@ -2,6 +2,7 @@ import React from 'react';
 import LiveGames from './LiveGames';
 import { useStateValue } from '../state/state';
 import { gameStatistics } from '../utils/utils';
+import { Link } from 'react-router-dom';
 
 const GameHistory = () => {
 	const [{ gameHistory, uniquePlayers }] = useStateValue();
@@ -15,7 +16,7 @@ const GameHistory = () => {
 						{player}
 					</td>
 					<td>
-						{totalGamesByName}
+						<Link to={`${player}`}>{totalGamesByName}</Link>
 					</td>
 					<td>
 						{wins}

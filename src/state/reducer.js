@@ -12,6 +12,13 @@ export const setUniquePlayers = players => {
 	};
 };
 
+export const setAllGamesByName = games => {
+	return {
+		type: 'SET_ALL_GAMES_BY_NAME',
+		payload: games
+	};
+};
+
 export const setNotification = notif => {
 	return {
 		type: 'SET_NOTIFICATION',
@@ -64,6 +71,14 @@ export const reducer = (state, action) => {
 				...action.payload
 			],
 			...state.uniquePlayers
+		};
+	case 'SET_ALL_GAMES_BY_NAME':
+		return {
+			...state,
+			allGamesByName: [
+				...action.payload
+			],
+			...state.allGamesByName
 		};
 	case 'SET_NOTIFICATION':
 		return {

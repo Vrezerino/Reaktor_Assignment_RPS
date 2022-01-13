@@ -4,6 +4,7 @@ const initialState = {
 	gameHistory: [],
 	liveGames: [],
 	uniquePlayers: [],
+	allGamesByName: [],
 	notification: ''
 };
 

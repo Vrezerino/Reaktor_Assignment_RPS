@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import LiveGames from './components/LiveGames';
 import GameHistory from './components/GameHistory';
+import PlayerGameHistory from './components/PlayerGameHistory';
+import Header from './components/Header';
+
 import { useStateValue } from './state/state';
 import {
 	setGameHistory,
@@ -13,11 +16,7 @@ import {
 import { getHistory } from './services/rpsService';
 import { uniquePlayers } from './utils/utils';
 
-import rock from './img/rock.png';
-import paper from './img/paper.png';
-import scissors from './img/scissors.png';
-
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
 	const socket = new WebSocket('wss://bad-api-assignment.reaktor.com/rps/live');
@@ -53,19 +52,11 @@ const App = () => {
 
 	return (
 		<div className='container'>
-			<h1>
-				<img src={rock} />
-				<img src={paper} />
-				<img src={scissors} />
-			</h1>
-			<nav>
-				<h2>
-					<Link to='/'>Live Games</Link> •&nbsp;
-					<Link to='/history'>Game History</Link></h2>
-			</nav>
+			<Header />
 			<Routes>
 				<Route path='/' element={<LiveGames small={false} />} />
 				<Route path='/history' element={<GameHistory />} />
+				<Route path='/history/:id' element={<PlayerGameHistory />} />
 			</Routes>
 			<footer>
 			</footer>

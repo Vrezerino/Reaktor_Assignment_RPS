@@ -89,6 +89,7 @@ h1, h2, h3 {
 
 .played {
 	color: white;
+	text-shadow: 3px 3px black;
 	background-image: url('./img/bang.png');
 }
 
@@ -109,6 +110,10 @@ h1, h2, h3 {
 
 table {
 	background-color: black;
+}
+
+table a {
+	text-decoration: underline;
 }
 
 thead {
