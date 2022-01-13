@@ -17,8 +17,8 @@ export const sortAscending = array => {
 	});
 };
 
-// Determine if player A wins. If game isn't a tie, return true or false.
 export const determineGameResult = game => {
+	// Determine if player A wins. If game isn't a tie, return true or false.
 	const a = game.playerA.played;
 	const b = game.playerB.played;
 
@@ -29,8 +29,8 @@ export const determineGameResult = game => {
 		: 'tie';
 };
 
-// Go through each game's playerA and playerB keys, and extract unique names from all.
 export const uniquePlayers = games => {
+	// Go through each game's playerA and playerB keys, and extract unique names from all.
 	const uniques = [];
 	games.forEach(
 		game => {

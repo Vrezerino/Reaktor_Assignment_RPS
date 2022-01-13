@@ -67,6 +67,7 @@ h1, h2, h3 {
 	.games-list-small {
 		margin: 0 auto;
 		width: 100%;
+		height: 135px;
 		display: initial;
 		text-align: center;
 	}
@@ -107,23 +108,18 @@ h1, h2, h3 {
 }
 
 table {
-	border-width: 1px;
-	border-color: white;
+	background-color: black;
 }
 
 thead {
 	font-weight: bold;
 }
 
-tr {
-	border-width: 1px;
-	border-color: white;
-}
-
 td {
 	padding: 0 1em 0 1em;
+	border-style: groove;
 	border-width: 1px;
-	border-color: orangered;
+	border-color:maroon;
 }
 
 footer {
