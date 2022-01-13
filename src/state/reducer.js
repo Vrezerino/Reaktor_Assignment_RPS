@@ -19,23 +19,29 @@ export const setNotification = notif => {
 	};
 };
 
-export const addOngoingGame = game => {
+export const addLiveGame = game => {
 	return {
-		type: 'ADD_ONGOING_GAME',
+		type: 'ADD_LIVE_GAME',
 		payload: game
 	};
 };
 
-export const updateOngoingGame = game => {
+export const updateLiveGame = game => {
 	return {
-		type: 'UPDATE_ONGOING_GAME',
+		type: 'UPDATE_LIVE_GAME',
 		payload: game
 	};
 };
 
-export const deleteOngoingGame = gameId => {
+export const flushLiveGames = () => {
 	return {
-		type: 'DELETE_ONGOING_GAME',
+		type: 'FLUSH_LIVE_GAMES',
+	};
+};
+
+export const deleteLiveGame = gameId => {
+	return {
+		type: 'DELETE_LIVE_GAME',
 		payload: gameId
 	};
 };
@@ -64,24 +70,29 @@ export const reducer = (state, action) => {
 			...state,
 			notification: action.payload
 		};
-	case 'ADD_ONGOING_GAME':
+	case 'ADD_LIVE_GAME':
 		return {
 			...state,
-			ongoingGames: [
-				...state.ongoingGames, action.payload
+			liveGames: [
+				...state.liveGames, action.payload
 			]
 		};
-	case 'UPDATE_ONGOING_GAME':
+	case 'UPDATE_LIVE_GAME':
 		return {
 			...state,
-			ongoingGames: [
-				...state.ongoingGames.map(g => g.gameId === action.payload.gameId ? action.payload : g)
+			liveGames: [
+				...state.liveGames.map(g => g.gameId === action.payload.gameId ? action.payload : g)
 			]
 		};
-	case 'DELETE_ONGOING_GAME':
+	case 'DELETE_LIVE_GAME':
 		return {
 			...state,
-			ongoingGames: state.ongoingGames.filter(g => g.gameId !== action.payload)
+			liveGames: state.liveGames.filter(g => g.gameId !== action.payload)
+		};
+	case 'FLUSH_LIVE_GAMES':
+		return {
+			...state,
+			liveGames: []
 		};
 	default:
 		return state;

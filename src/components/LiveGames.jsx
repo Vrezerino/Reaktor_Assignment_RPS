@@ -1,10 +1,10 @@
 import React from 'react';
 import { useStateValue } from '../state/state';
+//import { flushLiveGames } from '../state';
 import { determineGameResult } from '../utils/utils';
 
 const LiveGame = ({ game, small }) => {
 	let windowWidth = window.innerWidth;
-	console.log(small);
 
 	const playerAWins = determineGameResult(game);
 	const a = game.playerA.played;
@@ -13,7 +13,7 @@ const LiveGame = ({ game, small }) => {
 	const playerB = game.playerB.name;
 
 	if (game.type === 'GAME_BEGIN') {
-		return small && windowWidth < 1430
+		return small && windowWidth < 1460
 			? <div className='playing-small'>{playerA} is playing {playerB}...</div>
 			: <div className='playing'>
 				<span style={{ float: 'left' }}>{playerA}</span>
@@ -34,10 +34,10 @@ const LiveGame = ({ game, small }) => {
 };
 
 const LiveGames = ({ small }) => {
-	const [{ ongoingGames }] = useStateValue();
+	const [{ liveGames }] = useStateValue();
 	return (
 		<div className={small ? 'games-list-small' : 'games-list'}>
-			{ongoingGames.map((g, i) => <LiveGame key={i} game={g} small={small} />)}
+			{liveGames.map((g, i) => <LiveGame key={i} game={g} small={small} />)}
 		</div>
 	);
 };

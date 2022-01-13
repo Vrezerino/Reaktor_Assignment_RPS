@@ -63,6 +63,15 @@ h1, h2, h3 {
 	width: 50%;
 }
 
+@media only screen and (max-width: 1300px) {
+	.games-list-small {
+		margin: 0 auto;
+		width: 100%;
+		display: initial;
+		text-align: center;
+	}
+}
+
 .playing, .played {
 	animation: appear 0.4s;
 	margin: 2px;
@@ -73,12 +82,13 @@ h1, h2, h3 {
 	height: 238px;
 }
 
-.played {
-	color: white;
-}
-
 .playing {
 	background-image: url('./img/rps.gif');
+}
+
+.played {
+	color: white;
+	background-image: url('./img/bang.png');
 }
 
 .playing-small, .played-small {
@@ -124,31 +134,4 @@ footer {
 
 hr {
 	border-color: orangered;
-}
-
-@media only screen and (max-width: 1430px) {
-	.playing, .played {
-		color: white;
-		background-image: none;
-		width: 30px;
-		height: 30px;
-	}
-
-	.games-list-small {
-		float: none;
-		height: 200px;
-		width: 90%;
-		text-align: center;
-		margin: 0 auto;
-		display: initial;
-		flex-wrap: nowrap;
-	}
-
-	.game-history {
-		float: none;
-	}
-
-	.table {
-		margin: 0 auto;
-	}
 }

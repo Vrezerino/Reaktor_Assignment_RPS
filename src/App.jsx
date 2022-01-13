@@ -4,9 +4,9 @@ import GameHistory from './components/GameHistory';
 import { useStateValue } from './state/state';
 import {
 	setGameHistory,
-	addOngoingGame,
-	updateOngoingGame,
-	deleteOngoingGame,
+	addLiveGame,
+	updateLiveGame,
+	deleteLiveGame,
 	setNotification,
 	setUniquePlayers
 } from './state/reducer';
@@ -40,12 +40,12 @@ const App = () => {
 			const gameJSON = JSON.parse(JSON.parse(game.data));
 			// Add new ongoing game.
 			if (gameJSON.type === 'GAME_BEGIN') {
-				dispatch(addOngoingGame(gameJSON));
+				dispatch(addLiveGame(gameJSON));
 			} else {
 				// Update game with result and delete if it finishes.
-				dispatch(updateOngoingGame(gameJSON));
+				dispatch(updateLiveGame(gameJSON));
 				setTimeout(() => {
-					dispatch(deleteOngoingGame(gameJSON.gameId));
+					dispatch(deleteLiveGame(gameJSON.gameId));
 				}, 5000);
 			}
 		};
@@ -59,17 +59,15 @@ const App = () => {
 				<img src={scissors} />
 			</h1>
 			<nav>
-				<h2><Link to='/'>Live Games</Link> • <Link to='/history'>Game History</Link></h2>
+				<h2>
+					<Link to='/'>Live Games</Link> •&nbsp;
+					<Link to='/history'>Game History</Link></h2>
 			</nav>
 			<Routes>
 				<Route path='/' element={<LiveGames small={false} />} />
 				<Route path='/history' element={<GameHistory />} />
 			</Routes>
-			<hr />
 			<footer>
-				© 2022 <a href='https://github.com/Vrezerino' rel='noreferrer' target='_blank'>
-					Patrick Park
-				</a>
 			</footer>
 		</div>
 	);

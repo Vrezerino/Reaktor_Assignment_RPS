@@ -2,7 +2,7 @@ import React, { useReducer, createContext, useContext } from 'react';
 
 const initialState = {
 	gameHistory: [],
-	ongoingGames: [],
+	liveGames: [],
 	uniquePlayers: [],
 	notification: ''
 };
