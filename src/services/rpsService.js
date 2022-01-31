@@ -6,7 +6,6 @@ let i = 0;
 export const getHistory = async (cursor, data = []) => {
 	const response = await axios.get(`${baseUrl}/history${cursor ? `?cursor=${cursor}` : ''}`);
 	const contents = JSON.parse(response.data.contents);
-	console.log(contents);
 	const currentCursor = contents.cursor.split('=')[1];
 	i++;
 
