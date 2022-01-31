@@ -1,4 +1,4 @@
-export const baseUrl = 'https://bad-api-assignment.reaktor.com/rps';
+export const baseUrl = 'https://api.allorigins.win/get?url=https://bad-api-assignment.reaktor.com/rps';
 
 export const sortAscending = array => {
 	return array.sort((a, b) => {
