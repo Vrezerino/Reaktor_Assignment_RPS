@@ -1,6 +1,6 @@
 # Rock Paper Scissors Data
 
-Assignment project.
+Assignment project. 2024 update: Rest in peace, API. It looks like Reaktor took it down. 
 
 URL: https://rockpaperscissorsdata.web.app/
 
